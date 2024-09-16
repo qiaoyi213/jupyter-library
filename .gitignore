@@ -1,0 +1,12 @@
+__pycache__/
+
+# Distrubution / Packaging 
+lib/
+
+# Environment / venv
+bin/
+pyvenv.cfg
+
+# Config
+config.py
+
