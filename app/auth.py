@@ -51,15 +51,18 @@ def login():
         if not user:
             flash("user do not exists")
             return redirect(url_for("auth_blueprint.login"))
-        user = User(username=username)
+
+        if user.check_password(password) == False:
+            flash("password wrong")
+            return redirect(url_for("auth_blueprint.login"))
 
         # check user information
         flash("Login Successful")
-        return redirect(url_for("auth.dashboard"))
+        return redirect(url_for("auth_blueprint.dashboard"))
 
     return render_template("auth/login.html")
 
 
 @auth_blueprint.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html")
+    return render_template("auth/dashboard.html")
